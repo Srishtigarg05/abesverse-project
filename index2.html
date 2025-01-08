@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABESVerse - Blog Website</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        
+        body {
+            margin: 0;
+            font-family:'Times New Roman', Times, serif;
+            background: linear-gradient(to bottom, #0b0b13, #0a0d16);
+            color: white;
+            padding: 0px;
+            
+        }
+        
+        .container a{
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            
+        }
+        .navbar {
+            width: 100%;
+            z-index: 3;
+            height: 80px;
+         
+        }
+      
+        .navbar-brand {
+         
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+        .nav-link {
+            color: white !important;
+            font-size: 1.1rem;
+            
+        }
+
+        .hero {
+            height: 60vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+            animation: background-shift 6s infinite alternate;
+            
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-top: 10rem;
+            letter-spacing: 2.5px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 1rem;  
+            margin-bottom: 2rem; 
+        }
+        .logo img {
+            width: 100%;
+         height: 100%;
+         z-index: 4;
+         animation: slideInDown 1s ease-out;
+         margin-top: 10rem;
+        
+        }
+        .text{
+            font-size: 1.5rem;
+            margin-right: 6rem;
+            width: 90%;
+            animation: backInLeft 1s ease;
+        }
+        .gradient-text {
+      font-size: 4rem;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(90deg, #f26643, #e96544, #6a82fb); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+.text button{
+        margin: 5px;
+        padding: 10px 10px;
+    }
+    button{
+        border-radius: 30px ;
+        
+        color: white;
+        font-size: 1rem;   
+        cursor: pointer;
+    }
+    .b1 .b2:hover{
+        background: linear-gradient(90deg, #e96544, #f26643);
+        transform: scale(1.1);
+        box-shadow: 1 8px 16px rgba(173, 171, 171, 0.3);
+
+    }
+    .b1 {
+        background-color: red;
+    }
+    .b2{
+        background-color: blue;
+    }
+    .img-fluid {
+    width: 100%;
+    height: 100%;  /* Ensure the image takes the full height as well */
+    object-fit: cover; /* Ensures the image covers the entire card area */
+    object-position: center;
+}
+
+       #b3{
+        background: linear-gradient(90deg, #f26643, #e96544, #6a82fb); 
+       }
+       .blog-section {
+            padding: 4rem 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-card .img-container {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .blog-description {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            background: linear-gradient(90deg, #f26643, #6a82fb);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            border: none;
+        }
+
+        .read-more:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+        .col-md-4 h5{
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: bolder;
+        }
+        .faq-section {
+            padding: 3rem 1rem;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+
+        .faq-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .faq-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .faq-title p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .accordion-item {
+            border: none;
+            background: #fff;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .accordion-header {
+            background: linear-gradient(90deg, #f26643, #d17963, #6a82fb); 
+            color: white;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        .accordion-button {
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            background: transparent;
+            color: white;
+            text-align: left;
+            border-radius: 8px;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        .accordion-button:focus {
+            border: none;
+            box-shadow: none !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #333;
+            background: rgba(255, 255, 255, 0.045) !important;
+        }
+
+        .accordion-body {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-icons {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .faq-footer {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .faq-footer p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .footer {
+  background: #0f1c2e;
+  color: #d3d3d3;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px 20px;
+}
+
+.footer-section h2, .footer-section h3 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul li a {
+  color: #d3d3d3;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  color: #ff9900;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-icon {
+  color: #d3d3d3;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ff9900;
+}
+
+.footer-bottom {
+  border-top: 1px solid #555;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+#back-to-top {
+  display: inline-block;
+  margin-top: 10px;
+  color: #ff9900;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#back-to-top:hover {
+  color: #fff;
+}
+
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">ABESVerse</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blogs/index.html">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="logo">
+            <img src="Untitled design(3).png" alt="ABESVerse Logo" >
+
+        </div>
+    
+        <div class="text">
+            <h1>Welcome to <to class="gradient-text">ABESVerse</to></h1>
+            <p>From the campus corridors to a digital universe – Discover ABES like never before.</p>
+            
+            <a href="blogs/blog-view.html">
+           <button class="b1" bgcolor="red">READ BLOGS</button> </a>
+           <button class="b2" data-bs-toggle="modal" data-bs-target="#loginModal" bgcolor="blue">LOGIN TO GET STARTED</button>
+           <p>Don't Have an account?<button data-bs-toggle="modal" data-bs-target="#signinModal" id="b3">SignUp</button></p>
+
+           
+       
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <div class="text-center mb-4">
+            <h2>Latest Blogs</h2>
+            <p>Explore the latest insights and stories from our community.</p>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="img-container">
+                    <img src="https://i.ytimg.com/vi/55zTjKXn9P4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDzvJyqmIhS-g6lBZusHorxYk62bQ" alt="Campus Life">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Campus Life</h3>
+                    <p class="blog-description">Experience the vibrant campus life and activities at ABES Engineering College.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="img-container">
+                    <img src="https://www.eduska.com/assets/user_photo/6596cd1ac32595a6b3e3c18fc7b0f7ef.jpg" alt="Library">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Library</h3>
+                    <p class="blog-description">Discover our vast collection of resources and peaceful study environment.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="img-container">
+                    <img src="https://abes.ac.in/img/about/s14.jpg" alt="Sports">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Sports</h3>
+                    <p class="blog-description">Explore the athletic facilities and sports achievements at ABES.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="img-container">
+                    <img src="https://scontent.fdel1-7.fna.fbcdn.net/v/t39.30808-6/426513849_430276786018939_691812458780988781_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=3MCQYwElIOMQ7kNvgEEN-wV&_nc_zt=23&_nc_ht=scontent.fdel1-7.fna&_nc_gid=AuEkCEn9lVbMQAWjO8t84ly&oh=00_AYBW53sOLxZN33J6Mf34pcZlKm5mZuaOZVx8VYbT6Kdn_A&oe=6784B6A8" alt="Research">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Research</h3>
+                    <p class="blog-description">Learn about the latest research initiatives and innovations at ABES.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR74mp4jHQDd4sqJ93I4b0Wh7kjegogheQCj9Efra636Rtf1wO0CenfuQRgiXq9SyoQZIE&usqp=CAU" alt="Clubs">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Clubs</h3>
+                    <p class="blog-description">Join our diverse range of student clubs and activities.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAbl0Xj9BCEav5byUUDcB7Skn_LVTS5gz0aYG_LIOmkeiS_sxjn8UjHBBWto6pGMoYYM&usqp=CAU" alt="fests">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Fests & Events</h3>
+                    <p class="blog-description">Fest & Events at ABESVerse
+                        Stay updated on upcoming fests, workshops, and activities! Join us for exciting events and be part of the vibrant college life.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="img-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhp13wDkHeQPgFTSk9fEys7sHa633AyDawjNsu8XPjD3_NoIR1qP_sJeAa5B4pUYG_3gM&usqp=CAU" alt="Seminars">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Seminars</h3>
+                    <p class="blog-description">Seminars at ABESVerse
+                        Engage with industry experts through insightful seminars. Expand your knowledge and stay ahead in your field.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="img-container">
+                    <img src="https://abes.ac.in/images1/B.tech.jpg" alt="Placements">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title">Placements</h3>
+                    <p class="blog-description">Explore career opportunities and placement success stories.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <!-- Feedback Section -->
+            <div class="text-center mt-5">
+                <h2>We Value Your Feedback</h2>
+                <p>Let us know how you feel about our content!</p>
+                <div>
+                    <button id="likeBtn" class="btn btn-success me-3">👍 Like</button>
+                    <span id="likeCount">0</span>
+                    <button id="dislikeBtn" class="btn btn-danger ms-3">👎 Dislike</button>
+                    <span id="dislikeCount">0</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Have questions? We’ve got answers! Find solutions to common queries below.</p>
+            </div>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            <img src="https://img.icons8.com/color/48/faq.png" class="faq-icons" alt="FAQ Icon"> What is ABESVerse?
+                        </button>
+                    </h2>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ABESVerse is a blogging platform where students, alumni, and faculty can share their experiences, stories, and insights about campus life and beyond.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            <img src="https://img.icons8.com/color/48/faq.png" class="faq-icons" alt="FAQ Icon"> How can I write a blog on ABESVerse?
+                        </button>
+                    </h2>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            To write a blog, sign up for an account, log in, and use the “Create Blog” option in your dashboard. Start sharing your thoughts and stories today!
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqHeading3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                            <img src="https://img.icons8.com/color/48/faq.png" class="faq-icons" alt="FAQ Icon"> Is ABESVerse free to use?
+                        </button>
+                    </h2>
+                    <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! ABESVerse is completely free for all users, whether you’re a student, alumni, or faculty member.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-footer">
+                <p>Still have questions? <a href="#" style="color: #6a82fb; text-decoration: underline;">Contact Us</a></p>
+            </div>
+        </section>
+
+        <script>
+            // JavaScript for Like/Dislike functionality
+            let likeCount = 0;
+            let dislikeCount = 0;
+        
+            document.getElementById("likeBtn").addEventListener("click", () => {
+                likeCount++;
+                document.getElementById("likeCount").textContent = likeCount;
+            });
+        
+            document.getElementById("dislikeBtn").addEventListener("click", () => {
+                dislikeCount++;
+                document.getElementById("dislikeCount").textContent = dislikeCount;
+            });
+        </script>
+        
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h2>ABESVerse</h2>
+            <p>
+              ABESVerse is a platform for college students to connect, share experiences, and grow together. Discover alumni reviews, collaborate with faculty, and explore new opportunities tailored for students.
+            </p>
+          </div>
+      
+          <div class="footer-section quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#faq">FAQs</a></li>
+            </ul>
+          </div>
+      
+          <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <ul>
+              <li>Email: <a href="mailto:support@abesverse.com">support@abesverse.com</a></li>
+              <li>Phone: +91-1234567890</li>
+              <li>Address: ABES College Campus, Ghaziabad</li>
+            </ul>
+          </div>
+      
+          <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="footer-bottom">
+          <p>&copy; 2025 ABESVerse. All Rights Reserved.</p>
+          <a href="#top" id="back-to-top">Back to Top</a>
+        </div>
+      </footer>
+      
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe src="login.html" frameborder="0" style="width: 100%; height: 450px;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signinModalLabel">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="signin.html" frameborder="0" style="width: 100%; height: 620px;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
