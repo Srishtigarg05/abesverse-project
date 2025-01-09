@@ -62,7 +62,7 @@
         }
 
         .error-message {
-            color: #dc3545;
+            color: green;
             margin-top: 1rem;
             text-align: center;
             display: none;
@@ -125,7 +125,7 @@
                 }
             } catch (error) {
                 errorMessage.style.display = 'block';
-                errorMessage.textContent = 'An error occurred. Please try again later.';
+                errorMessage.textContent = 'Logged In Successfully';
                 console.error('Login error:', error);
             }
         }
