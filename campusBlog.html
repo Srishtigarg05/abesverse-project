@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Blog</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        /* Existing styles remain the same until blog-post */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f5f6fa;
+            --text-color: #2c3e50;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: black;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(90deg, #f26643, #e96544, #6a82fb);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: linear-gradient(90deg, #fc9277, #ff8262,#6a82fb);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: black;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-excerpt {
+            color: black;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: linear-gradient(90deg, #fc9277, #ff8262,#6a82fb);
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            position: relative;
+            color: black;
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: black;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        /* Existing interaction bar and button styles remain the same */
+        .interaction-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .like-dislike {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: black;
+            transition: color 0.2s;
+        }
+
+        .btn:hover {
+            color: white !important;
+        }
+
+        @media (max-width: 768px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Existing header and search container remain the same -->
+    <header>
+        <h1>Campus Blog</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search blogs..." id="searchInput">
+    </div>
+
+    <div class="blog-container" id="blogContainer">
+        <!-- Blog cards will be dynamically added here -->
+    </div>
+
+    <!-- Modal for full blog post -->
+    <div class="modal" id="postModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced blog data with gallery images
+        const blogPosts = [
+            {
+                id: 1,
+                author: "Sarah Johnson",
+                date: "2024-01-09",
+                title: "Campus Life During Winter",
+                excerpt: "Winter on campus brings a magical transformation...",
+                content: "Winter on campus brings a magical transformation. The buildings covered in snow create perfect photo opportunities, while students hurry between classes wrapped in scarves and warm coats. The campus transforms into a winter wonderland, with every corner offering a new perspective on familiar places...",
+                mainImage: "/api/placeholder/800/400",
+                gallery: [
+                    "/api/placeholder/400/300",
+                    "/api/placeholder/400/300",
+                    "/api/placeholder/400/300",
+                    "/api/placeholder/400/300"
+                ],
+                likes: 45,
+                dislikes: 2,
+                comments: ["Great post!", "Love the winter vibes"]
+            },
+            // Add more blog posts as needed
+        ];
+
+        // Function to create blog cards
+        function createBlogCard(post) {
+            return `
+                <div class="blog-card" onclick="openModal(${post.id})">
+                    <div class="card-header">
+                        <div class="author-avatar"></div>
+                        <div class="post-meta">
+                            <div class="author-name">${post.author}</div>
+                            <div class="post-date">${new Date(post.date).toLocaleDateString()}</div>
+                        </div>
+                    </div>
+                    <img src="${post.mainImage}" alt="${post.title}" class="card-image">
+                    <h2 class="card-title">${post.title}</h2>
+                    <p class="card-excerpt">${post.excerpt}</p>
+                    <div class="interaction-bar">
+                        <div class="like-dislike">
+                            <span><i class="fas fa-heart"></i> ${post.likes}</span>
+                            <span><i class="fas fa-comment"></i> ${post.comments.length}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to create modal content
+        function createModalContent(post) {
+            return `
+                <div class="modal-header">
+                    <h2 class="modal-title">${post.title}</h2>
+                    <div class="post-meta">
+                        <span>${post.author}</span>
+                        <span>${new Date(post.date).toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <img src="${post.mainImage}" alt="${post.title}" class="modal-image">
+                <div class="modal-body">
+                    <p>${post.content}</p>
+                    <div class="image-gallery">
+                        ${post.gallery.map(img => `
+                            <img src="${img}" alt="Gallery image" class="gallery-image" onclick="expandImage('${img}')">
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="interaction-bar">
+                    <div class="like-dislike">
+                        <button class="btn" onclick="handleLike(${post.id})">
+                            <i class="fas fa-heart"></i>
+                            <span>${post.likes}</span>
+                        </button>
+                        <button class="btn" onclick="toggleComments(${post.id})">
+                            <i class="fas fa-comment"></i>
+                            <span>${post.comments.length}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function openModal(postId) {
+            const post = blogPosts.find(p => p.id === postId);
+            if (post) {
+                document.getElementById('modalContent').innerHTML = createModalContent(post);
+                document.getElementById('postModal').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('postModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function expandImage(src) {
+            const modal = document.getElementById('postModal');
+            modal.innerHTML = `
+                <div class="modal-content" style="background: none; max-width: 90%;">
+                    <button class="close-btn" onclick="closeModal()" style="color: white;">&times;</button>
+                    <img src="${src}" alt="Expanded image" style="width: 100%; height: auto; border-radius: 8px;">
+                </div>
+            `;
+        }
+
+        // Existing event listeners and functions
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredPosts = blogPosts.filter(post => 
+                post.title.toLowerCase().includes(searchTerm) || 
+                post.content.toLowerCase().includes(searchTerm) ||
+                post.author.toLowerCase().includes(searchTerm)
+            );
+            renderBlogPosts(filteredPosts);
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('postModal')) {
+                closeModal();
+            }
+        }
+
+        function renderBlogPosts(posts = blogPosts) {
+            document.getElementById('blogContainer').innerHTML = posts.map(post => createBlogCard(post)).join('');
+        }
+
+        // Initial render
+        renderBlogPosts();
+        
+      
+    </script>
+    
+</body>
+</html>
