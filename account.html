@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abesverse - Posts</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            background: linear-gradient(90deg, #f26643, #e96544, #6a82fb); 
+            padding: 1rem;
+            position: fixed;
+            width: 98%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            margin: 0.8rem .8rem ;
+            height: 80px;
+           
+           
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 10px 30rem 0 0;
+            display: flex;
+            height: 30px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            
+            
+        }
+        .nav-back{
+            color: white;
+             text-decoration: none;
+             margin-right: 1.2rem;
+             font-weight: bold;
+             margin-top: .8rem;
+        }
+        
+    .logo-img{
+        margin-top: .8rem;
+        width: 160px;
+        z-index: 2;
+       
+
+    }
+        .nav-logo {
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            position: sticky;
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: grid;
+            grid-template-columns: 300px 1fr 350px;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 120px auto 0;
+            padding: 1rem;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Left Sidebar - Account Details */
+        .left-sidebar {
+            background: #111;
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-card {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .redirect-page{
+            margin-top: 10rem;
+            color: white;
+           
+        }
+        .stat-item {
+            background: #1a1a1a;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: #111;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .post-card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .post-author-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        .post-meta {
+            flex-grow: 1;
+        }
+
+        .post-author {
+            font-weight: bold;
+        }
+
+        .post-time {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .post-content {
+            margin-bottom: 1rem;
+        }
+
+        .post-image {
+            width: 100%;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #222;
+        }
+
+        .action-btn {
+            background: transparent;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Right Sidebar - Trending */
+        .right-sidebar {
+            background: #111;
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .trending-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #222;
+        }
+
+        .trending-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .trending-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a90e2;
+            min-width: 30px;
+        }
+
+        .trending-content h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trending-content p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .follow-suggestions {
+            margin-top: 2rem;
+        }
+
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .suggestion-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .suggestion-info {
+            flex-grow: 1;
+        }
+
+        .follow-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .follow-btn:hover {
+            background: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        
+           
+            <div class="nav-content">
+                <div class="logo"><img src="Untitled design(3).png" class="logo-img"></div>
+            <a href="index.html" class="nav-logo">ABESVerse</a>
+        </div>
+        <a href="index.html" class="nav-back">Home</a>
+        <a href="account.html" class="nav-back">Profile</a>
+        <a href="post.html" class="nav-back">Posts</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Sidebar - Account Details -->
+        <div class="left-sidebar">
+            <div class="profile-card">
+                <img src="/api/placeholder/120/120" alt="Profile" class="profile-image">
+                <h2>Srishti Garg</h2>
+                <p>srishti@05</p>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Posts</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Followers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Following</div>
+                    </div>
+                </div>
+
+                </div>
+                <div class="redirect-page" > Post Your BLOGS</div>
+               
+        </div>
+
+       
+
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="post-card">
+                <div class="post-header">
+                    <img src="/api/placeholder/40/40" alt="Author" class="post-author-img">
+                    <div class="post-meta">
+                        <div class="post-author">John Doe</div>
+                        <div class="post-time">2 hours ago</div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <h2>Getting Started with Web3</h2>
+                    <p>A comprehensive guide to understanding blockchain technology and its implications for the future of the internet...</p>
+                    <img src="/api/placeholder/600/300" alt="Post image" class="post-image">
+                </div>
+                <div class="post-actions">
+                    <button class="action-btn">
+                        <i class="far fa-heart"></i>
+                        <span>234</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="far fa-comment"></i>
+                        <span>45</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="far fa-bookmark"></i>
+                        <span>Save</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="far fa-share-square"></i>
+                        <span>Share</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar - Trending -->
+        <div class="right-sidebar">
+            <div class="trending-section">
+                <h2 class="trending-header">Trending Topics</h2>
+                <div class="trending-item">
+                    <div class="trending-number">01</div>
+                    <div class="trending-content">
+                        <h3>The Future of AI</h3>
+                        <p>1.2k posts • Trending worldwide</p>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-number">02</div>
+                    <div class="trending-content">
+                        <h3>Blockchain Revolution</h3>
+                        <p>856 posts • Trending in Technology</p>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-number">03</div>
+                    <div class="trending-content">
+                        <h3>Web3 Development</h3>
+                        <p>645 posts • Trending in Programming</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="follow-suggestions">
+                <h2 class="trending-header">Who to Follow</h2>
+                <div class="suggestion-item">
+                    <img src="/api/placeholder/40/40" alt="User" class="suggestion-img">
+                    <div class="suggestion-info">
+                        <h3>Sarah Johnson</h3>
+                        <p>@sarahj</p>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+                <div class="suggestion-item">
+                    <img src="/api/placeholder/40/40" alt="User" class="suggestion-img">
+                    <div class="suggestion-info">
+                        <h3>Mike Chen</h3>
+                        <p>@mikechen</p>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -9,6 +9,8 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
     <style>
         
         body {
@@ -25,16 +27,20 @@
             
         }
         .navbar {
-            width: 100%;
+            
             z-index: 3;
             height: 80px;
+            background: linear-gradient(90deg, #f26643, #e96544, #6a82fb); 
+            margin: .8rem 1rem;
+           
+            
          
         }
       
         .navbar-brand {
-         
+            
             font-weight: 600;
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
         .nav-link {
             color: white !important;
@@ -43,20 +49,20 @@
         }
 
         .hero {
-            height: 60vh;
+            height: 45vh;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            
+            margin-bottom: 2rem;
             animation: background-shift 6s infinite alternate;
             
         }
         .hero h1 {
             font-size: 4rem;
             font-weight: 800;
-            margin-top: 10rem;
+            margin-top: 8rem;
             letter-spacing: 2.5px;
         }
         .hero p {
@@ -69,7 +75,7 @@
          height: 100%;
          z-index: 4;
          animation: slideInDown 1s ease-out;
-         margin-top: 10rem;
+         margin-top: 8rem;
         
         }
         .text{
@@ -77,6 +83,7 @@
             margin-right: 6rem;
             width: 90%;
             animation: backInLeft 1s ease;
+            
         }
         .gradient-text {
       font-size: 4rem;
@@ -104,15 +111,16 @@
 
     }
     .b1 {
-        background-color:  #e96544;
+        background-color:  #6a82fb;
     }
     .b2{
-        background-color: #6a82fb;
+        background-color: #e96544;
+        font-size: 1rem;
     }
     .img-fluid {
     width: 100%;
-    height: 100%;  /* Ensure the image takes the full height as well */
-    object-fit: cover; /* Ensures the image covers the entire card area */
+    height: 100%;  
+    object-fit: cover;
     object-position: center;
 }
 
@@ -201,6 +209,44 @@
             margin-bottom: 1rem;
             font-weight: bolder;
         }
+
+        .mission-vision {
+  background: #1a1a1a;
+  padding: 4rem 2rem;
+}
+
+.principles-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #333;
+  padding: 2rem;
+  border-radius: 10px;
+  flex: 1;
+}
+.features-grid {
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  
+}
+
+.feature {
+    margin-top: 2rem;
+  background: #222;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.feature-text{
+    margin-top: 2rem;
+    padding-left: 1rem;
+}
         .faq-section {
             padding: 3rem 1rem;
             background-color: white;
@@ -293,6 +339,75 @@
   text-align: center;
 }
 
+.team-section {
+  padding: 3rem 1.5rem;
+}
+
+.container1 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.team-card {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+
+.team-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid #f39c12;
+}
+
+
+
+.role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.bio {
+  font-size: 0.9rem;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .team-card {
+    padding: 1.5rem;
+  }
+
+  .team-photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+}
+
+
 .footer-content {
   display: flex;
   flex-wrap: wrap;
@@ -362,6 +477,9 @@
 #back-to-top:hover {
   color: #fff;
 }
+.terms-conditions a{
+    color: white;
+}
 
     </style>
 </head>
@@ -375,10 +493,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog-view.html" target="_self">Post Blogs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="account.html" target="_self">Your Account</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact-info">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -395,9 +513,9 @@
             <p>From the campus corridors to a digital universe – Discover ABES like never before.</p>
             
             <a href="#blogs">
-           <button class="b1" bgcolor="red">READ BLOGS</button> </a>
-           <button class="b2" data-bs-toggle="modal" data-bs-target="#loginModal" bgcolor="blue">LOGIN TO GET STARTED</button>
-           <p>Don't Have an account?<button data-bs-toggle="modal" data-bs-target="#signinModal" id="b3">SignUp</button></p>
+           <button class="b1" bgcolor="red">Explore Stories</button> </a>
+           <button class="b2" data-bs-toggle="modal" data-bs-target="#signinModal" bgcolor="blue">Join our community</button>
+           <p>Already Have an account?<button data-bs-toggle="modal" data-bs-target="#loginModal" id="b3">LogIn</button></p>
 
            
        
@@ -511,8 +629,56 @@
                 </div>
             </div>
         </section>
+        <section class="mission-vision">
+            <div class="container">
+              <h2>Our Guiding Principles</h2>
+              <div class="principles-grid">
+                <div class="card">
+                  <h3>🌱  Our Mission</h3>
+                  
+                  <p>
+                    To create a dynamic platform that empowers ABES students by fostering collaboration, sharing experiences, and bridging the gap between academic learning and real-world opportunities. 
+                    We strive to build a community where students, alumni, and faculty come together to inspire growth, spark innovation, and support one another in achieving success.
+                  </p>
+                </div>
+                <div class="card">
+                  <h3>🚀 Our Vision</h3>
+                  <p>To become the ultimate digital ecosystem for ABES, where connections transcend boundaries, knowledge flows freely, and every member of the community thrives. 
+                    We envision ABESVerse as a catalyst for personal, academic, and professional growth, making ABES a symbol of excellence and unity.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!--Features section-->
+          <section class="features" id="features">
+            
+            <div class="container">
+                <h2 class="feature-text">Why ABESVerse?</h2>
+              
+              <div class="features-grid">
+                <div class="feature">
+                  <h3>🗣️ Student Experiences</h3>
+                  <p>Read stories and insights shared by your peers.</p>
+                </div>
+                <div class="feature">
+                  <h3>🌟 Alumni Reviews</h3>
+                  <p>Gain advice from ABES alumni about career paths and opportunities.</p>
+                </div>
+                <div class="feature">
+                  <h3>🎓 Faculty Interaction</h3>
+                  <p>Get guidance and mentorship from experienced faculty members.</p>
+                </div>
+                <div class="feature">
+                  <h3>📢 Community Forums</h3>
+                  <p>Discuss ideas, seek help, and grow together.</p>
+                </div>
+              </div>
+            </div>
+          </section>
         
-        <!-- FAQ Section -->
+
+
+          <!-- FAQ Section -->
         <section class="faq-section">
             <div class="faq-title">
                 <h2>Frequently Asked Questions</h2>
@@ -561,7 +727,82 @@
                 <p>Still have questions? <a href="#" style="color: #6a82fb; text-decoration: underline;">Contact Us</a></p>
             </div>
         </section>
+       
+  <section class="team-section">
+    <div class="container1" id="about">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-card">
+          <img src="https://i.pinimg.com/736x/d5/51/31/d5513130e30228fc090ed18965d43338.jpg" alt="Team Member" class="team-photo">
+          <h3>Srishti Garg</h3>
+          <p class="role">Founder & Developer</p>
+          <p class="bio">A passionate developer and visionary, committed to building a platform that connects and empowers ABES students.
+            Dedicated to creating user-friendly interfaces and enhancing user experiences with modern design practices.
+          </p>
+        </div>
+        <!-- Team Member 2 -->
+        <div class="team-card">
+          <img src="https://i.pinimg.com/736x/d5/51/31/d5513130e30228fc090ed18965d43338.jpg" alt="Team Member" class="team-photo">
+          <h3>Samvika Singh</h3>
+          <p class="role">Founder & Developer</p>
+          <p class="bio">A passionate developer and visionary, committed to building a platform that connects and empowers ABES students.
+            Dedicated to creating user-friendly interfaces and enhancing user experiences with modern design practices.</p>
+        </div>
+        
+    </div>
+  </section>
 
+
+        <footer class="footer">
+            <div class="footer-content" id="contact-info">
+              <div class="footer-section about">
+                <h2>ABESVerse</h2>
+                <p>
+                  ABESVerse is a platform for college students to connect, share experiences, and grow together. Discover alumni reviews, collaborate with faculty, and explore new opportunities tailored for students.
+                </p>
+              </div>
+          
+              <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="#home">Home</a></li>
+                  <li><a href="#about">About Us</a></li>
+                  <li><a href="#blog">Blog</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="#faq">FAQs</a></li>
+                </ul>
+              </div>
+          
+              <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <ul>
+                  <li>Email: <a href="mailto:support@abesverse.com">support@abesverse.com</a></li>
+                  <li>Phone: +91-1234567890</li>
+                  <li>Address: ABES College Campus, Ghaziabad</li>
+                </ul>
+              </div>
+          
+              <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                  <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                  <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          
+            <div class="footer-bottom">
+                <a href="#top" id="back-to-top">Back to Top</a>
+                <br><br>
+                <hr>
+                <div class="terms-conditions">
+                <p>© 2025 ABESVerse. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+            </div>
+            </div>
+          </footer>
         <script>
             // JavaScript for Like/Dislike functionality
             let likeCount = 0;
@@ -579,51 +820,7 @@
         </script>
         
     </section>
-    <footer class="footer">
-        <div class="footer-content">
-          <div class="footer-section about">
-            <h2>ABESVerse</h2>
-            <p>
-              ABESVerse is a platform for college students to connect, share experiences, and grow together. Discover alumni reviews, collaborate with faculty, and explore new opportunities tailored for students.
-            </p>
-          </div>
-      
-          <div class="footer-section quick-links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#faq">FAQs</a></li>
-            </ul>
-          </div>
-      
-          <div class="footer-section contact">
-            <h3>Contact Us</h3>
-            <ul>
-              <li>Email: <a href="mailto:support@abesverse.com">support@abesverse.com</a></li>
-              <li>Phone: +91-1234567890</li>
-              <li>Address: ABES College Campus, Ghaziabad</li>
-            </ul>
-          </div>
-      
-          <div class="footer-section social">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-              <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-      
-        <div class="footer-bottom">
-          <p>&copy; 2025 ABESVerse. All Rights Reserved.</p>
-          <a href="#top" id="back-to-top">Back to Top</a>
-        </div>
-      </footer>
+    
       
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

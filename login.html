@@ -86,49 +86,52 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" >Login</button>
         </form>
         <div id="errorMessage" class="error-message"></div>
     </div>
 
 
     <script>
-        async function handleLogin(event) {
-            event.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('errorMessage');
+       async function handleLogin(event) {
+    event.preventDefault();
 
-            try {
-                const response = await fetch('/api/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username: username,
-                        password: password
-                    })
-                });
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('errorMessage');
 
-                const data = await response.json();
+    // Clear any previous error message
+    errorMessage.style.display = 'none';
+    errorMessage.textContent = '';
 
-                if (response.ok) {
-                    // Successful login
-                    localStorage.setItem('token', data.token); // Store the token
-                    window.location.href = '/dashboard'; // Redirect to dashboard
-                } else {
-                    // Failed login
-                    errorMessage.style.display = 'block';
-                    errorMessage.textContent = data.message || 'Login failed. Please try again.';
-                }
-            } catch (error) {
-                errorMessage.style.display = 'block';
-                errorMessage.textContent = 'Logged In Successfully';
-                console.error('Login error:', error);
-            }
+    try {
+        const response = await fetch('http://localhost:5000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Successful login
+            localStorage.setItem('token', data.token); // Store the token
+            window.location.href = 'account.html'; // Redirect to dashboard
+        } else {
+            // Failed login
+            errorMessage.style.display = 'block';
+            errorMessage.textContent = data.message || 'Invalid username or password.';
         }
+    } catch (error) {
+        // Handle network or unexpected errors
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = 'Network error. Please try again later.';
+        console.error('Login error:', error);
+    }
+}
+
         
 
     </script>
